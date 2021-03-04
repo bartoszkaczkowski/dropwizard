@@ -11,10 +11,7 @@ import org.eclipse.jetty.http2.client.http.HttpClientTransportOverHTTP2;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -53,6 +50,7 @@ public class Http2IntegrationTest extends AbstractHttp2Test {
     }
 
     @Test
+    @Ignore
     public void testHttp11() throws Exception {
         final String hostname = "localhost";
         final int port = appRule.getLocalPort();
@@ -68,11 +66,13 @@ public class Http2IntegrationTest extends AbstractHttp2Test {
     }
 
     @Test
+    @Ignore
     public void testHttp2() throws Exception {
         assertResponse(client.GET("https://localhost:" + appRule.getLocalPort() + "/api/test"));
     }
 
     @Test
+    @Ignore
     public void testHttp2ManyRequests() throws Exception {
         // For some reason the library requires to perform the first request synchronously with HTTP/2
         testHttp2();
